@@ -3,70 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loan Eligibility Form</title>
+    <title>Loan Eligibility Assessment</title>
 </head>
 <body>
-    <h1>Loan Eligibility Form</h1>
-    <form id="loanEligibilityForm" method="POST">
+    <h2>Loan Eligibility Assessment Form</h2>
+
+    <form id="loanEligibilityForm" method="post" action="{% url 'loan_eligibility' %}">
         {% csrf_token %}
+        
+        <!-- Dropdown for State -->
         <label for="state">State:</label>
-        <input type="text" id="state" name="state" required><br><br>
+        <input type="text" name="state" id="state" required><br><br>
 
+        <!-- Dropdown for Crop -->
         <label for="crop">Crop:</label>
-        <input type="text" id="crop" name="crop" required><br><br>
+        <input type="text" name="crop" id="crop" required><br><br>
 
+        <!-- Dropdown for Season -->
         <label for="season">Season:</label>
-        <input type="text" id="season" name="season" required><br><br>
+        <input type="text" name="season" id="season" required><br><br>
 
+        <!-- Text fields for numerical inputs -->
         <label for="area_units">Area Units:</label>
-        <input type="text" id="area_units" name="area_units" required><br><br>
+        <input type="number" name="area_units" id="area_units" step="0.01" required><br><br>
 
         <label for="production_units">Production Units:</label>
-        <input type="text" id="production_units" name="production_units" required><br><br>
+        <input type="number" name="production_units" id="production_units" step="0.01" required><br><br>
 
-        <label for="model">Model:</label>
-<select id="model" name="model">
-    <option value="random_forest">Random Forest</option>
-    <option value="decision_tree">Decision Tree</option>
-</select><br><br>
+        <label for="average_area">Average Area:</label>
+        <input type="number" name="average_area" id="average_area" step="0.01" required><br><br>
 
+        <label for="total_production">Total Production:</label>
+        <input type="number" name="total_production" id="total_production" step="0.01" required><br><br>
 
-        <button type="submit">Submit</button>
+        <label for="yield_value">Yield Value:</label>
+        <input type="number" name="yield_value" id="yield_value" step="0.01" required><br><br>
+
+        <label for="annual_rainfall">Annual Rainfall:</label>
+        <input type="number" name="annual_rainfall" id="annual_rainfall" step="0.01" required><br><br>
+
+        <label for="min_price">Min Price:</label>
+        <input type="number" name="min_price" id="min_price" step="0.01" required><br><br>
+
+        <label for="max_price">Max Price:</label>
+        <input type="number" name="max_price" id="max_price" step="0.01" required><br><br>
+
+        <label for="modal_price">Modal Price:</label>
+        <input type="number" name="modal_price" id="modal_price" step="0.01" required><br><br>
+
+        <label for="soil_index">Soil Index:</label>
+        <input type="number" name="soil_index" id="soil_index" step="0.01" required><br><br>
+
+        <label for="production_per_hectare">Production per Hectare:</label>
+        <input type="number" name="production_per_hectare" id="production_per_hectare" step="0.01" required><br><br>
+
+        <!-- Dropdown for model choice -->
+        <label for="model">Select Model:</label>
+        <select name="model" id="model">
+            <option value="random_forest">Random Forest</option>
+            <option value="decision_tree">Decision Tree</option>
+        </select><br><br>
+
+        <!-- Submit button -->
+        <button type="submit">Check Eligibility</button>
     </form>
 
+    <!-- Display result -->
     <div id="result"></div>
 
     <script>
-    document.getElementById('loanEligibilityForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Collect form data
-        const formData = new FormData(this);
+        // Optional: Handle AJAX request to prevent page reload (requires JavaScript/jQuery)
+        document.getElementById("loanEligibilityForm").onsubmit = async function(event) {
+            event.preventDefault();
 
-        // Get CSRF token from the page
-        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            const formData = new FormData(this);
 
-        // Send form data to the backend with CSRF token in headers
-        fetch('/loan/', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-CSRFToken': csrfToken  // Include CSRF token in the request header
+            try {
+                const response = await fetch(this.action, {
+                    method: "POST",
+                    headers: {
+                        "X-CSRFToken": formData.get("csrfmiddlewaretoken")
+                    },
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.loan_eligibility) {
+                    document.getElementById("result").innerText = "Loan Eligibility: " + result.loan_eligibility;
+                } else if (result.error) {
+                    document.getElementById("result").innerText = "Error: " + result.error;
+                }
+            } catch (error) {
+                document.getElementById("result").innerText = "An error occurred. Please try again.";
+                console.error("Error:", error);
             }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.loan_eligibility) {
-                document.getElementById('result').innerText = 'Loan Eligibility: ' + data.loan_eligibility;
-            } else if (data.error) {
-                document.getElementById('result').innerText = 'Error: ' + data.error;
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            document.getElementById('result').innerText = 'An error occurred while processing your request.';
-        });
-    });
+        };
     </script>
 </body>
 </html>
