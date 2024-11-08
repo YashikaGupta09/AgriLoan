@@ -14,7 +14,9 @@
     <nav>
         <div class="logo">
             <img src="{% static 'images/logo.png' %}" alt="AgriLoan AI Logo" /> <!-- Correct path -->
+           
         </div>
+
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#mission">Mission</a></li>
@@ -22,23 +24,43 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
+      <!-- Hero Section -->
     <div class="hero">
         <h1>Welcome to AgriLoan</h1>
         <p>AI-powered Loan Risk Assessment for Small-Scale Farmers</p>
         <a href="{% url 'loan_form' %}" class="btn-primary">Start Your Loan Eligibility Check</a>
     </div>
 
-    <!-- Mission Section -->
-    <div id="mission" class="content">
-        <h2>Our Mission</h2>
-        <p>Our Mission is to empower farmers with the knowledge, tools, and resources they need to achieve financial independence and sustainable agricultural growth...</p>
-    </div>
-
+        <!-- Mission Section -->
+        <div id="mission" class="content">
+            <h2>Our Mission</h2>
+            <p>Our Mission is to empower farmers with the knowledge, tools, and resources they need to achieve financial independence and sustainable agricultural growth...</p>
+        </div>    
+    
     <!-- Resources Section -->
     <div id="resources" class="content">
         <h2>Resources</h2>
-        <p>We provide a variety of tools and resources to help farmers understand their financial situation...</p>
+        <p>We provide a variety of tools and resources to help farmers understand their financial situation and improve their access to loans.</p>
+
+        <div class="cards-container">
+            <div class="card">
+                <h3>Crop Management and Best Practices</h3>
+                <p>Crop Management and Best Practices are essential for ensuring sustainable agricultural production, improving crop yield, and minimizing risks associated with farming. Farmers should adopt soil testing to determine nutrient deficiencies and apply the right fertilizers, pesticides, and herbicides judiciously to prevent overuse and environmental harm. Efficient irrigation systems, like drip irrigation, ensure water conservation while promoting healthy crop growth. Crop rotation and intercropping are effective techniques to enhance soil fertility and reduce pest buildup. Additionally, farmers should stay informed about weather patterns, adopt climate-resilient crops, and use modern farming technologies like precision agriculture to optimize their farming operations. By following these best practices, farmers can improve productivity, reduce costs, and maintain long-term soil health, ensuring a stable and profitable farming business.</p>
+            </div>
+
+            <div class="card">
+                <h3>Weather Data Insights</h3>
+                <p>Weather Data Insights are crucial for farmers to make informed decisions about crop management, irrigation, and harvesting. By leveraging real-time and predictive weather data, farmers can anticipate adverse weather conditions such as heavy rainfall, drought, or frost, and take proactive measures to protect their crops. For example, weather forecasts can help determine the best time to plant or harvest crops, reducing the risk of crop damage or loss. Climate data, including temperature and humidity trends, can guide farmers on irrigation needs, ensuring water is used efficiently. Additionally, weather insights can alert farmers about potential pest or disease outbreaks triggered by specific weather conditions, allowing them to take preventive actions. By integrating weather data into daily farming operations, farmers can optimize their productivity, reduce losses, and improve their resilience to climate-related challenges, ultimately enhancing both crop yield and financial stability.</div>
+
+            <div class="card">
+                <h3>Loan Application Assistance</h3>
+                <p>Loan Application Assistance is a vital resource for farmers seeking financial support to enhance their agricultural operations. This service provides step-by-step guidance through the loan application process, from determining loan eligibility to submitting the necessary documents. It helps farmers understand the various types of loans available, including government-backed agricultural loans, subsidized interest schemes, and private financial products. Additionally, Loan Application Assistance offers tools for calculating loan amounts, repayment terms, and interest rates, ensuring farmers can choose the most suitable option for their needs. Personalized support is also available to help farmers improve their creditworthiness by offering tips on maintaining a good credit score and managing debt. By simplifying the loan application process and making financial products more accessible, this resource empowers farmers to secure the funding they need to invest in their farms, improve productivity, and achieve long-term growth.</div>
+
+            <div class="card">
+                <h3>Financial Literacy Resources</h3>
+                <p>Financial Literacy Resources are essential tools for empowering farmers to manage their finances effectively and make informed decisions about their agricultural operations. These resources provide education on key financial concepts such as budgeting, saving, understanding interest rates, managing cash flow, and debt management. Through easy-to-understand guides, videos, and interactive content, farmers can learn how to track income and expenses, plan for future financial needs, and evaluate loan options. Additionally, resources can offer insights on how to build and maintain a good credit score, which is crucial for accessing loans at favorable terms. Financial literacy resources also provide practical examples tailored to farming, helping farmers understand the financial aspects of crop production, input costs, and seasonal income fluctuations. By enhancing financial knowledge, these resources enable farmers to make sound financial decisions, improve their creditworthiness, and achieve greater financial stability and success in their agricultural ventures.
+                </div>
+        </div>
     </div>
 
     <!-- Footer -->

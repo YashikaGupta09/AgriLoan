@@ -1,156 +1,165 @@
-/* Reset some default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    padding-top: 50px;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            padding-top: 50px;
+        }
 
-/* Navigation bar */
-nav {
-    background-color: #4CAF50;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-}
+        /* Navigation bar */
+        nav {
+            background-color: #4CAF50;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;  /* Makes the nav fixed at the top */
+            top: 7px;           /* Positions the nav at the very top */
+            left: 0;          /* Aligns it to the left of the page */
+            width: 100%;      /* Ensures the nav stretches across the full width */
+            z-index: 1000; 
+        }
 
-nav .logo img {
-    width: 50px;
-    height: 50px;
-    margin-left: 78px;
-}
+        nav .logo img {
+            width: 50px;
+            height: 50px;
+            margin-left: 78px;
+        }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 32px;
-    margin-left: 53px;
-}
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 32px;
+            justify-content: left;
+            flex-grow: 1;
+            margin-left: 53px;
+        }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
+        nav ul li {
+            display: inline;
+        }
 
-nav ul li a:hover {
-    background-color: #45a049;
-    font-weight: bold;
-    text-decoration: underline;
-}
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
 
-/* Hero section */
-.hero {
-    background: url("{% static 'loanassessment/images/hero.jpg' %}") no-repeat center center/cover;
-    color: white;
-    padding: 156px 20px;
-    text-align: center;
-}
+        nav ul li a:hover {
+            background-color: #45a049;
+            font-weight: bold; /* Make the text bold on hover */
+            text-decoration: underline; /* Underline the text on hover */
+        }
 
-.hero h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-}
+        /* Hero section */
+        .hero {
+            background: url('https://png.pngtree.com/thumb_back/fh260/background/20210302/pngtree-crop-green-rice-light-effect-wallpaper-image_571433.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 156px 20px;
+            text-align: center;
+        }
 
-.hero p {
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-    font-weight: bold;
-}
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
 
-.btn-primary {
-    padding: 12px 25px;
-    font-size: 1.1rem;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 18px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
 
-.btn-primary:hover {
-    background-color: #45a049;
-}
+        .btn-primary {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 18px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
 
-/* Footer */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
 
-footer a {
-    color: #4CAF50;
-    text-decoration: none;
-}
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
 
-/* Content section */
-.content {
-    padding: 50px 20px;
-    text-align: center;
-}
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
 
-.content h2 {
-    font-size: 2rem;
-    color: #4CAF50;
-}
+        /* Content section */
+        .content {
+            padding: 50px 20px;
+            text-align: center;
+        }
 
-.content p {
-    font-size: 1.2rem;
-    color: #555;
-}
+        .content h2 {
+            font-size: 2.5rem;
+            color: #4CAF50;
+        }
 
-.cards-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 43px 0;
-    margin-top: 30px;
-    margin-left: 62px;
-}
+        .content p {
+            font-size: 18px;
+            color: #555;
+            margin-top: 12px;
+            padding: 12px 24px 15px 24px;
+        }
 
-.card {
-    background-color: #1f5b20;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 92%;
-    height: 500px;
-}
+        /* Resources Section */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 cards in each row */
+            gap: 43px 0;
+            margin-top: 30px;
+            margin-left: 62px;
+        }
 
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
+        .card {
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 92%;  /* This ensures the card fills the width of its grid cell */
+            height: 500px; 
+        }
 
-.card h3 {
-    font-size: 30px;
-    color: #fefffe;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
 
-.card p {
-    font-size: 17px;
-    color: #fff;
-}
+        .card h3 {
+            font-size: 30px;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 17px;
+            color: #333;
+        }
