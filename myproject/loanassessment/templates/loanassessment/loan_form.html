@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Eligibility Form</title>
+</head>
+<body>
+    <h1>Loan Eligibility Form</h1>
+    <form id="loanEligibilityForm" method="POST">
+        {% csrf_token %}
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required><br><br>
+
+        <label for="crop">Crop:</label>
+        <input type="text" id="crop" name="crop" required><br><br>
+
+        <label for="season">Season:</label>
+        <input type="text" id="season" name="season" required><br><br>
+
+        <label for="area_units">Area Units:</label>
+        <input type="text" id="area_units" name="area_units" required><br><br>
+
+        <label for="production_units">Production Units:</label>
+        <input type="text" id="production_units" name="production_units" required><br><br>
+
+        <label for="model">Model:</label>
+<select id="model" name="model">
+    <option value="random_forest">Random Forest</option>
+    <option value="decision_tree">Decision Tree</option>
+</select><br><br>
+
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+    document.getElementById('loanEligibilityForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Collect form data
+        const formData = new FormData(this);
+
+        // Get CSRF token from the page
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        // Send form data to the backend with CSRF token in headers
+        fetch('/loan/', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': csrfToken  // Include CSRF token in the request header
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.loan_eligibility) {
+                document.getElementById('result').innerText = 'Loan Eligibility: ' + data.loan_eligibility;
+            } else if (data.error) {
+                document.getElementById('result').innerText = 'Error: ' + data.error;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('result').innerText = 'An error occurred while processing your request.';
+        });
+    });
+    </script>
+</body>
+</html>
