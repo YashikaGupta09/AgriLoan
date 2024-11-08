@@ -129,7 +129,7 @@ footer a {
 }
 
 .card {
-    background-color: #f4f4f4;
+    background-color: #1f5b20;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -145,11 +145,12 @@ footer a {
 
 .card h3 {
     font-size: 30px;
-    color: #4CAF50;
+    color: #fefffe;
     margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
 .card p {
     font-size: 17px;
-    color: #333;
+    color: #fff;
 }
