@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriLoan - AI Powered Loan Risk Assessment</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Correct path -->
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="AgriLoan AI Logo" /> <!-- Correct path -->
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#resources">Resources</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to AgriLoan</h1>
+        <p>AI-powered Loan Risk Assessment for Small-Scale Farmers</p>
+        <a href="{% url 'loan_form' %}" class="btn-primary">Start Your Loan Eligibility Check</a>
+    </div>
+
+    <!-- Mission Section -->
+    <div id="mission" class="content">
+        <h2>Our Mission</h2>
+        <p>Our Mission is to empower farmers with the knowledge, tools, and resources they need to achieve financial independence and sustainable agricultural growth...</p>
+    </div>
+
+    <!-- Resources Section -->
+    <div id="resources" class="content">
+        <h2>Resources</h2>
+        <p>We provide a variety of tools and resources to help farmers understand their financial situation...</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 AgriLoan - AI Powered Loan Risk Assessment</p>
+        <p>Made by Team Valora :)</p>
+    </footer>
+
+</body>
+</html>

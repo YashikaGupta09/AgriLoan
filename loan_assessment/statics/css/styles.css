@@ -1,0 +1,155 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding-top: 50px;
+}
+
+/* Navigation bar */
+nav {
+    background-color: #4CAF50;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav .logo img {
+    width: 50px;
+    height: 50px;
+    margin-left: 78px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    margin-left: 53px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #45a049;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Hero section */
+.hero {
+    background: url("{% static 'loanassessment/images/hero.jpg' %}") no-repeat center center/cover;
+    color: white;
+    padding: 156px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 18px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+/* Content section */
+.content {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.content h2 {
+    font-size: 2rem;
+    color: #4CAF50;
+}
+
+.content p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 43px 0;
+    margin-top: 30px;
+    margin-left: 62px;
+}
+
+.card {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 92%;
+    height: 500px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    font-size: 30px;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 17px;
+    color: #333;
+}
