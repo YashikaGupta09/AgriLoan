@@ -1,17 +1,11 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ChatbotController;  // Make sure this is here
+use App\Http\Controllers\ChatbotController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// Define the route for frontend testing (optional)
+// Route for frontend chatbot page
 Route::get('/chatbot', function () {
-    return view('chatbot');  // This will load the frontend page for the chatbot
+    return view('chatbot');  // Load the chatbot frontend view
 });
 
+// Route for processing the question
 Route::post('/ask-question', [ChatbotController::class, 'askQuestion'])->name('ask.question');
-Route::post('/ask', [ChatbotController::class, 'ask']);  // Check for this route as well
-
