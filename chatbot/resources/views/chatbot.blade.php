@@ -31,18 +31,12 @@
 
             // Send the message to the Laravel controller using AJAX (axios)
             axios.post('/ask-question', {
-                message: message  // Changed to 'message' to match the backend
+                message: message
             })
             .then(function (response) {
-                // Log the response to verify its content
-                console.log(response.data);
-                
-                // Display the model's response in the response div
                 document.getElementById('response').innerText = 'Chatbot: ' + response.data.answer;
             })
             .catch(function (error) {
-                // Handle error and show in the response div
-                console.error(error);  // Log error for debugging
                 document.getElementById('response').innerText = 'Error: ' + error.message;
             });
         }
