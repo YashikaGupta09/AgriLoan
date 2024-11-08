@@ -11,6 +11,11 @@ from sklearn.metrics import accuracy_score
 import os
 from django.conf import settings
 
+from django.shortcuts import render
+
+def index(request):
+    return render(request, 'loanassessment/index.html')
+
 def train_and_predict_model(request):
     if request.method == 'POST':
         # Collect input data from the form
@@ -102,4 +107,5 @@ def train_and_predict_model(request):
             return JsonResponse({'error': f'Prediction failed: {str(e)}'}, status=500)
 
     # Render the form if GET request
-    return render(request, 'loanassessment/loan_form.html')
+    return render(request, 'loanassessment/loan_form.html')  # This should render the loan form page
+

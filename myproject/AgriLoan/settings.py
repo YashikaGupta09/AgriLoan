@@ -40,9 +40,14 @@ INSTALLED_APPS = [
     'loanassessment',  # Add this line
 ]
 
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",  # or wherever you store your CSS/JS files
+# ]
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  # or wherever you store your CSS/JS files
+    BASE_DIR / "myproject" / "loanassessment" / "static",
 ]
 
 MEDIA_URL = '/media/'
@@ -65,6 +70,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
+        # 'DIRS': [
+        #     BASE_DIR / 'templates',  # Path to your templates folder
+        # ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

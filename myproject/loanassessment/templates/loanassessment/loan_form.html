@@ -3,73 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loan Eligibility Assessment</title>
+    <title>AGRILOAN-AI - Loan Eligibility Assessment</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 34px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            margin-top: 2px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 26px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, select, button {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+            font-size: 1.1rem;
+            padding: 12px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.2rem;
+            color: #333;
+            border-radius: 5px;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            label, input, select, button {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h2>Loan Eligibility Assessment Form</h2>
 
-    <form id="loanEligibilityForm" method="post" action="{% url 'loan_eligibility' %}">
-        {% csrf_token %}
-        
-        <!-- Dropdown for State -->
-        <label for="state">State:</label>
-        <input type="text" name="state" id="state" required><br><br>
+    <div class="container">
+        <h1>AGRILOAN-AI</h1>
+        <h2>Loan Eligibility Assessment</h2>
 
-        <!-- Dropdown for Crop -->
-        <label for="crop">Crop:</label>
-        <input type="text" name="crop" id="crop" required><br><br>
+        <form id="loanEligibilityForm" method="post" action="{% url 'loan_eligibility' %}">
+            {% csrf_token %}
+            
+            <!-- Dropdown for State -->
+            <label for="state">State:</label>
+            <input type="text" name="state" id="state" required>
 
-        <!-- Dropdown for Season -->
-        <label for="season">Season:</label>
-        <input type="text" name="season" id="season" required><br><br>
+            <!-- Dropdown for Crop -->
+            <label for="crop">Crop:</label>
+            <input type="text" name="crop" id="crop" required>
 
-        <!-- Text fields for numerical inputs -->
-        <label for="area_units">Area Units:</label>
-        <input type="number" name="area_units" id="area_units" step="0.01" required><br><br>
+            <!-- Dropdown for Season -->
+            <label for="season">Season:</label>
+            <input type="text" name="season" id="season" required>
 
-        <label for="production_units">Production Units:</label>
-        <input type="number" name="production_units" id="production_units" step="0.01" required><br><br>
+            <!-- Text fields for numerical inputs -->
+            <label for="area_units">Area Units:</label>
+            <input type="number" name="area_units" id="area_units" step="0.01" required>
 
-        <label for="average_area">Average Area:</label>
-        <input type="number" name="average_area" id="average_area" step="0.01" required><br><br>
+            <label for="production_units">Production Units:</label>
+            <input type="number" name="production_units" id="production_units" step="0.01" required>
 
-        <label for="total_production">Total Production:</label>
-        <input type="number" name="total_production" id="total_production" step="0.01" required><br><br>
+            <label for="average_area">Average Area:</label>
+            <input type="number" name="average_area" id="average_area" step="0.01" required>
 
-        <label for="yield_value">Yield Value:</label>
-        <input type="number" name="yield_value" id="yield_value" step="0.01" required><br><br>
+            <label for="total_production">Total Production:</label>
+            <input type="number" name="total_production" id="total_production" step="0.01" required>
 
-        <label for="annual_rainfall">Annual Rainfall:</label>
-        <input type="number" name="annual_rainfall" id="annual_rainfall" step="0.01" required><br><br>
+            <label for="yield_value">Yield Value:</label>
+            <input type="number" name="yield_value" id="yield_value" step="0.01" required>
 
-        <label for="min_price">Min Price:</label>
-        <input type="number" name="min_price" id="min_price" step="0.01" required><br><br>
+            <label for="annual_rainfall">Annual Rainfall:</label>
+            <input type="number" name="annual_rainfall" id="annual_rainfall" step="0.01" required>
 
-        <label for="max_price">Max Price:</label>
-        <input type="number" name="max_price" id="max_price" step="0.01" required><br><br>
+            <label for="min_price">Min Price:</label>
+            <input type="number" name="min_price" id="min_price" step="0.01" required>
 
-        <label for="modal_price">Modal Price:</label>
-        <input type="number" name="modal_price" id="modal_price" step="0.01" required><br><br>
+            <label for="max_price">Max Price:</label>
+            <input type="number" name="max_price" id="max_price" step="0.01" required>
 
-        <label for="soil_index">Soil Index:</label>
-        <input type="number" name="soil_index" id="soil_index" step="0.01" required><br><br>
+            <label for="modal_price">Modal Price:</label>
+            <input type="number" name="modal_price" id="modal_price" step="0.01" required>
 
-        <label for="production_per_hectare">Production per Hectare:</label>
-        <input type="number" name="production_per_hectare" id="production_per_hectare" step="0.01" required><br><br>
+            <label for="soil_index">Soil Index:</label>
+            <input type="number" name="soil_index" id="soil_index" step="0.01" required>
 
-        <!-- Dropdown for model choice -->
-        <label for="model">Select Model:</label>
-        <select name="model" id="model">
-            <option value="random_forest">Random Forest</option>
-            <option value="decision_tree">Decision Tree</option>
-        </select><br><br>
+            <label for="production_per_hectare">Production per Hectare:</label>
+            <input type="number" name="production_per_hectare" id="production_per_hectare" step="0.01" required>
 
-        <!-- Submit button -->
-        <button type="submit">Check Eligibility</button>
-    </form>
+            <!-- Dropdown for model choice -->
+            <label for="model">Select Model:</label>
+            <select name="model" id="model">
+                <option value="random_forest">Random Forest</option>
+                <option value="decision_tree">Decision Tree</option>
+            </select>
 
-    <!-- Display result -->
-    <div id="result"></div>
+            <!-- Submit button -->
+            <button type="submit">Check Eligibility</button>
+        </form>
+
+        <!-- Display result -->
+        <div id="result" class="result"></div>
+    </div>
 
     <script>
         // Optional: Handle AJAX request to prevent page reload (requires JavaScript/jQuery)
@@ -89,10 +200,13 @@
 
                 const result = await response.json();
 
+                const resultDiv = document.getElementById("result");
                 if (result.loan_eligibility) {
-                    document.getElementById("result").innerText = "Loan Eligibility: " + result.loan_eligibility;
+                    resultDiv.innerText = "Loan Eligibility: " + result.loan_eligibility;
+                    resultDiv.className = "result success";
                 } else if (result.error) {
-                    document.getElementById("result").innerText = "Error: " + result.error;
+                    resultDiv.innerText = "Error: " + result.error;
+                    resultDiv.className = "result error";
                 }
             } catch (error) {
                 document.getElementById("result").innerText = "An error occurred. Please try again.";
@@ -100,5 +214,6 @@
             }
         };
     </script>
+
 </body>
 </html>
